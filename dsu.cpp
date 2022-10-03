@@ -22,21 +22,17 @@ class DSU
 public:
     DSU()
     {
-        fill_n(parent, MAX_SIZE, -1);
-        fill_n(size, MAX_SIZE, -1);
-    }
-
-public:
-    void make_set(int v)
-    {
-        parent[v] = v;
-        size[v] = 1;
+        REP(i, 0, MAX_SIZE)
+        {
+            parent[i] = i;
+        }
+        fill_n(size, MAX_SIZE, 1);
     }
 
 public:
     int find_set(int v)
     {
-        if (parent[v] == v || parent[v] == -1)
+        if (parent[v] == v)
         {
             return parent[v];
         }
@@ -71,14 +67,6 @@ int main()
         {
             p1 = rand() * 1.0 / RAND_MAX * 50;
             p2 = rand() * 1.0 / RAND_MAX * 50;
-        }
-        if (friendsGroups.find_set(p1) == -1)
-        {
-            friendsGroups.make_set(p1);
-        }
-        if (friendsGroups.find_set(p2) == -1)
-        {
-            friendsGroups.make_set(p2);
         }
         cout << "parent " << p1 << " " << friendsGroups.find_set(p1) << "\n";
         cout << "parent " << p2 << " " << friendsGroups.find_set(p2) << "\n";
