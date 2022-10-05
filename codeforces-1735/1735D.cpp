@@ -20,7 +20,7 @@ void setupFileIO()
 }
 void setup()
 {
-    setupFileIO();
+    // setupFileIO();
     ios::sync_with_stdio(0);
     cin.tie(0);
 }
@@ -48,43 +48,46 @@ void solve()
     REP(i, 0, n)
     {
         set<string> bSet;
-        aSet.erase(a[i]);
         bSet.insert(aSet.begin(), aSet.end());
-        for (auto b : bSet)
+        REP(j, 0, n)
         {
-            bSet.erase(b);
-            string c = "";
+            if (bSet.find(a[j]) == bSet.end())
+            {
+                continue;
+            }
+            bSet.erase(a[j]);
+            string b = "";
             REP(kx, 0, k)
             {
-                if (a[i][kx] == b[kx])
+                if (a[i][kx] == a[j][kx])
                 {
-                    c += a[i][kx];
+                    b += a[i][kx];
                 }
-                else if (a[i][kx] == '1' && b[kx] == '2')
+                else if ((a[i][kx] == '1' && a[j][kx] == '2') || (a[i][kx] == '2' && a[j][kx] == '1'))
                 {
-                    c += '0';
+                    b += '0';
                 }
-                else if (a[i][kx] == '0' && b[kx] == '2')
+                else if ((a[i][kx] == '0' && a[j][kx] == '2') || (a[i][kx] == '2' && a[j][kx] == '0'))
                 {
-                    c += '1';
+                    b += '1';
                 }
                 else
                 {
-                    c += '2';
+                    b += '2';
                 }
             }
-            if (bSet.find(c) != bSet.end())
+            if (bSet.find(b) != bSet.end())
             {
-                cout << a[i] << " " << b << " " << c << "\n";
+                // cout << a[i] << " " << a[j] << " " << b << "\n";
+                bSet.erase(b);
                 cnt[a[i]]++;
-                bSet.erase(c);
             }
         }
     }
     ll ans = 0;
     for (auto x : cnt)
     {
-        cout << x.F << " " << x.S << "\n";
+        // cout << x.F << " " << x.S << "\n";
         if (x.S >= 2)
         {
             ans += x.S * (x.S - 1) / 2;
