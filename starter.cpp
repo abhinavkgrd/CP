@@ -11,7 +11,7 @@ typedef pair<int, int> pi;
 
 #define REP(i, a, b) for (int i = a; i < b; i++)
 
-ll MOD = 10e7 + 9;
+#define MOD 10e7 + 9
 
 void setupFileIO()
 {
@@ -33,7 +33,7 @@ void solve()
 int main()
 {
     setup();
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
