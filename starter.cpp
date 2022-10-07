@@ -19,20 +19,6 @@ void setup()
     cin.tie(0);
 }
 
-#define MOD 10e7 + 9
-
-void setupFileIO()
-{
-    freopen("../input.txt", "r", stdin);
-    freopen("../output.txt", "w", stdout);
-}
-void setup()
-{
-    setupFileIO();
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-}
-
 void solve()
 {
     // solution goes here
